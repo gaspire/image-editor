@@ -244,6 +244,7 @@ class Text extends Component {
                 canvas.setActiveObject(newText);
             }
 
+            newText.enterEditing();
             this.isPrevEditing = true;
             resolve(this.graphics.createObjectProperties(newText));
         });
