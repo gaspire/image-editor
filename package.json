@@ -1,13 +1,13 @@
 {
-  "name": "@gaspire/imageeditor",
+  "name": "@bwgj/image-editor",
   "author": "NHN FE Development Lab <dl_javascript@nhn.com>",
-  "version": "1.9.2",
+  "version": "1.0.5",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gaspire/image-editor.git"
+    "url": "git+https://github.com/gaspire/image-editor.git"
   },
-  "main": "dist/tui-image-editor.js",
+  "main": "dist/@bwgj/image-editor.js",
   "files": [
     "src",
     "dist",
@@ -39,11 +39,11 @@
     "istanbul-instrumenter-loader": "^1.0.0",
     "jasmine-core": "^2.4.1",
     "jasmine-jquery": "^2.1.1",
-    "jquery": "^3.4.0",
+    "jquery": "^3.5.1",
     "jsdoc": "^3.5.4",
     "karma": "^4.4.1",
     "karma-chrome-launcher": "^2.2.0",
-    "karma-coverage": "^2.0.1",
+    "karma-coverage": "^2.0.2",
     "karma-edge-launcher": "^0.4.2",
     "karma-es5-shim": "0.0.4",
     "karma-firefox-launcher": "^1.1.0",
@@ -71,14 +71,14 @@
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.10.1"
+    "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
     "test": "karma start --no-single-run",
     "test:ne": "KARMA_SERVER=ne karma start",
     "test:ex": "node exampleTest.js",
     "test:types": "tsc --project test/types",
-    "bundle": "webpack && webpack -p && npm run bundle:svg && node tsBannerGenerator.js",
+    "bundle": "webpack && webpack -p",
     "bundle:svg": "node makesvg.js",
     "serve": "webpack-dev-server",
     "doc:dev": "tuidoc --dev",
@@ -90,5 +90,14 @@
     "fabric": "3.6.0",
     "tui-code-snippet": "^1.5.0",
     "tui-color-picker": "^2.2.0"
+  },
+  "bugs": {
+    "url": "https://github.com/gaspire/image-editor/issues"
+  },
+  "homepage": "https://github.com/gaspire/image-editor#readme",
+  "directories": {
+    "doc": "docs",
+    "example": "examples",
+    "test": "test"
   }
 }

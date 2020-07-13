@@ -4,7 +4,6 @@
  */
 import snippet from 'tui-code-snippet';
 import Invoker from './invoker';
-import UI from './ui';
 import action from './action';
 import commandFactory from './factory/command';
 import Graphics from './graphics';
@@ -148,18 +147,6 @@ class ImageEditor {
         this.activeObjectId = null;
 
         /**
-         * UI instance
-         * @type {Ui}
-         */
-        if (options.includeUI) {
-            const UIOption = options.includeUI;
-            UIOption.usageStatistics = options.usageStatistics;
-
-            this.ui = new UI(wrapper, UIOption, this.getActions());
-            options = this.ui.setUiDefaultSelectionStyle(options);
-        }
-
-        /**
          * Invoker
          * @type {Invoker}
          * @private
@@ -172,11 +159,11 @@ class ImageEditor {
          * @private
          */
         this._graphics = new Graphics(
-            this.ui ? this.ui.getEditorArea() : wrapper, {
+            wrapper, {
                 cssMaxWidth: options.cssMaxWidth,
                 cssMaxHeight: options.cssMaxHeight,
                 useItext: true,
-                useDragAddIcon: !!this.ui
+                useDragAddIcon: true
             }
         );
 
@@ -214,11 +201,6 @@ class ImageEditor {
 
         if (options.usageStatistics) {
             sendHostName();
-        }
-
-        if (this.ui) {
-            this.ui.initCanvas();
-            this.setReAction();
         }
         fabric.enableGLFiltering = false;
     }
@@ -1391,10 +1373,6 @@ class ImageEditor {
         this._graphics.destroy();
         this._graphics = null;
 
-        if (this.ui) {
-            this.ui.destroy();
-        }
-
         forEach(this, (value, key) => {
             this[key] = null;
         }, this);
@@ -1554,7 +1532,7 @@ class ImageEditor {
      * });
      */
     setObjectPosition(id, posInfo) {
-        return this.execute(commands.SET_OBJECT_POSITION, id, posInfo);
+        return this.execute(commands.f, id, posInfo);
     }
 }
 
